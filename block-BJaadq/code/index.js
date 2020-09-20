@@ -2,34 +2,75 @@
 
 function countAllPeople() {
   // your code goes here
+  let answer = 0;
+  got.houses.forEach(val => {
+    answer += val.people.length;
+  });
+  return answer;
 }
 
 function peopleByHouses() {
   // your code goes here
+  let newObj = {};
+  got.houses.forEach(val => {
+    newObj[val.name] = val.people.length;
+  });
+  return newObj;
 }
 
 function everyone() {
-  // your code goes here
+
+  let newArr = got.houses.map(val => {
+    return val.people.map(val => {
+      return val.name;
+    })
+  });
+  return newArr.flat();
 }
 
 function nameWithS() {
-  // your code goes here
+
+  let newArr = got.houses.map(val => {
+    return val.people.map(val => {
+      return val.name;
+    })
+  }).flat().filter(val => {
+    return (val.startsWith('s') || (val.startsWith('S')))
+  });
+
 }
 
 function nameWithA() {
-  // your code goes here
+
+  let newArr = got.houses.map(val => {
+    return val.people.map(val => {
+      return val.name;
+    })
+  }).flat().filter(val => {
+    return (val.startsWith('a') || (val.startsWith('A')))
+  });
+  return newArr;
 }
 
 function surnameWithS() {
-  // your code goes here
+  let newArr = [];
+  got.houses.forEach(val => val.people.forEach(val => newArr.push(val.name)));
+  return newArr.filter(val => val.slice(val.lastIndexOf(" "), val.length - 1).includes("S"));
 }
 
 function surnameWithA() {
-  // your code goes here
+  let newArr = [];
+  got.houses.forEach(val => val.people.forEach(val => newArr.push(val.name)));
+  return newArr.filter(val => val.slice(val.lastIndexOf(" "), val.length - 1).includes("A"));
 }
 
 function peopleNameOfAllHouses() {
   // your code goes here
+  let newObj = {};
+  got.houses.forEach(val => {
+    newObj[val.name] = val.people.map(val => val.name);
+  });
+  return newObj;
 }
 
 // Testing your result after writing your function
