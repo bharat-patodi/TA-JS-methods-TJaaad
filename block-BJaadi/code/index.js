@@ -60,3 +60,6 @@ var customers = [
 // - Sort the array created above alphabetically
 
 // - Create a new array that contains only user who has at least one vowel in the firstname.
+
+
+// Dummy text
