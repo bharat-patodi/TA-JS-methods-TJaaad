@@ -2,34 +2,89 @@
 
 function countAllPeople() {
   // your code goes here
+  return got.houses.reduce((acc, curr) => {
+    return acc + curr.people.length;
+  }, 0);
 }
 
 function peopleByHouses() {
   // your code goes here
+  return got.houses.reduce((acc, curr) => {
+    acc.push(curr.people.length);
+    return acc;
+  }, []);
 }
 
 function everyone() {
-  // your code goes here
-}
+  // Using reduce twice here -
+  return got.houses.reduce((acc, curr) => {
+    acc.push(curr.people.reduce((a, c) => {
+      a.push(c.name);
+      return a;
+    }, []));
+    return acc.flat();
+  }, []);
+};
 
 function nameWithS() {
-  // your code goes here
-}
+    return got.houses.reduce((acc, curr) => {
+      acc.push(curr.people.reduce((a, c) => {
+        if(c.name.toLowerCase().includes('s')) {
+          a.push(c.name);
+        }
+          return a;
+      }, []));
+    return acc.flat();
+  }, []);
+};
 
 function nameWithA() {
-  // your code goes here
-}
+    return got.houses.reduce((acc, curr) => {
+      acc.push(curr.people.reduce((a, c) => {
+        if(c.name.toLowerCase().includes('a')) {
+          a.push(c.name);
+        }
+          return a;
+      }, []));
+    return acc.flat();
+  }, []);
+};
 
 function surnameWithS() {
-  // your code goes here
-}
+    return got.houses.reduce((acc, curr) => {
+      acc.push(curr.people.reduce((a, c) => {
+        let d = c.name.split(" ");
+        if(d[1].toLowerCase().startsWith('s')) {
+          a.push(c.name);
+        }
+          return a;
+      }, []));
+    return acc.flat();
+  }, []);
+};
 
-function surnameWithA() {
-  // your code goes here
-}
+function surnameWithS() {
+    return got.houses.reduce((acc, curr) => {
+      acc.push(curr.people.reduce((a, c) => {
+        let d = c.name.split(" ");
+        if(d[1].toLowerCase().startsWith('a')) {
+          a.push(c.name);
+        }
+          return a;
+      }, []));
+    return acc.flat();
+  }, []);
+};
 
 function peopleNameOfAllHouses() {
   // your code goes here
+  return got.houses.reduce((acc, curr) => {
+    acc[curr.name] = curr.people.reduce((a, c) => {
+      a.push(c.name);
+      return a;
+    }, []);
+    return acc;
+  }, {});
 }
 
 // Testing your result after writing your function
